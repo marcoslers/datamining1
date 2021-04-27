@@ -1,8 +1,5 @@
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import utils.JDBC;
+import utils.ETL;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -19,14 +16,12 @@ public class ETL_GUI extends javax.swing.JFrame {
     /**
      * Creates new form ETL_GUI
      */
-     
-    private JDBC jdbc; 
     
-        
+    private ETL etl;
+    
     public ETL_GUI() {
         initComponents();
-        jdbc = new JDBC("dataminingdba","12345678","contaminantes");
-        jdbc.createConnection();
+        etl = new ETL();
     }
 
     /**
@@ -43,7 +38,7 @@ public class ETL_GUI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        btn_iniciar.setText("Iniciar proceso");
+        btn_iniciar.setText("Iniciar proceso ETL");
         btn_iniciar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_iniciarActionPerformed(evt);
@@ -55,16 +50,16 @@ public class ETL_GUI extends javax.swing.JFrame {
         pan_principalLayout.setHorizontalGroup(
             pan_principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pan_principalLayout.createSequentialGroup()
-                .addContainerGap(105, Short.MAX_VALUE)
+                .addContainerGap(106, Short.MAX_VALUE)
                 .addComponent(btn_iniciar)
-                .addGap(103, 103, 103))
+                .addGap(102, 102, 102))
         );
         pan_principalLayout.setVerticalGroup(
             pan_principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pan_principalLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(69, 69, 69)
                 .addComponent(btn_iniciar)
-                .addContainerGap(129, Short.MAX_VALUE))
+                .addContainerGap(71, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -82,9 +77,8 @@ public class ETL_GUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_iniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_iniciarActionPerformed
-        // TODO add your handling code here:
-        jdbc.createQuery("select id_estacion from estacion where clave_estacion = 'AJM';");
-     
+        btn_iniciar.setEnabled(false);
+        etl.extract();
     }//GEN-LAST:event_btn_iniciarActionPerformed
 
     /**

@@ -24,9 +24,9 @@ public class JDBC {
     private String password;
     private Connection con;
     
-    public JDBC(String user,String password,String dbname) {
+    public JDBC(String user,String password,int port,String dbname) {
         this.driver = "com.mysql.cj.jdbc.Driver";
-        this.url = "jdbc:mysql://localhost:3306/"+dbname;
+        this.url = "jdbc:mysql://localhost:"+Integer.toString(port)+"/"+dbname;
         this.user = user;
         this.password = password;
     }
@@ -42,14 +42,12 @@ public class JDBC {
     }
     
     public void createQuery(String query){
-        int id_estacion=0;
         try {
             Statement st =  con.createStatement();
             ResultSet rs = st.executeQuery(query);
             while(rs.next()){
-                id_estacion=rs.getInt("id_estacion");
+                
             }
-            System.out.println("estacion "+Integer.toString(id_estacion));
         } catch (SQLException ex) {
             Logger.getLogger(JDBC.class.getName()).log(Level.SEVERE, null, ex);
         }

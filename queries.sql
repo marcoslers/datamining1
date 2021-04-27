@@ -5,6 +5,21 @@ nombre_estacion varchar(50) not null,
 alcaldia_municipio varchar(50) not null,
 entidad varchar(50) not null);
 
+create table elementos (
+id_elemento int auto_increment primary key,
+clave varchar(50) not null,
+nombre varchar(50) not null,
+unidad varchar(50) not null,
+significado_unidad varchar(50) not null);
+
+create table mediciones (
+id_medicion int auto_increment primary key,
+id_estacion int not null,
+id_elemento int not null,
+medicion float not null,
+no_semana int not null,
+fecha date);
+
 insert into estacion
 (clave_estacion,nombre_estacion,alcaldia_municipio,entidad)
 values
@@ -53,15 +68,12 @@ values
 ('VIF','Villa de las Flores','Coacalco de Berriozábal','Estado de México'),
 ('XAL','Xalostoc','Ecatepec de Morelos','Estado de México');
 
+insert into elementos
+(clave,nombre,unidad,significado_unidad)
+values
+('PP','Precipitación pluvial','mm','milímetros de lluvia');
+
 select*from estacion;
 
-create table mediciones (
-id_medicion int auto_increment primary key,
-id_estacion int not null,
-elemento varchar(50) not null,
-alcaldia_municipio varchar(50) not null,
-entidad varchar(50) not null,
-no_semana int not null,
-fecha date,
-medicion float(3,2));
+
 

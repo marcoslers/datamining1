@@ -1,4 +1,5 @@
 ETL_GUI$1.class
 ETL_GUI.class
+utils\ETL.class
 utils\JDBC.class
 ETL_GUI$2.class
