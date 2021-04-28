@@ -9,7 +9,7 @@ import utils.ETL;
 
 /**
  *
- * @author marcos
+ * @author Edwin y Marcos
  */
 public class ETL_GUI extends javax.swing.JFrame {
 

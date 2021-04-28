@@ -72,8 +72,3 @@ insert into elementos
 (clave,nombre,unidad,significado_unidad)
 values
 ('PP','Precipitación pluvial','mm','milímetros de lluvia');
-
-select*from estacion;
-
-
-
